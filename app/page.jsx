@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Button from "@/components/Button/Button";
 import Card from "@/components/Card/Card";
