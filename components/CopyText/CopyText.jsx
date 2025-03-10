@@ -11,7 +11,6 @@ export const CopyText = ({
   text,
 }) => {
   const [showFeedback, setShowFeedback] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const [feedbackText, setFeedbackText] = useState("Copied!");
   const handleCopy = useCallback(async() => {
     try {
@@ -40,8 +39,6 @@ export const CopyText = ({
   return <span
     className={thisClassName}
     onClick={handleCopy}
-    onMouseEnter={() => setIsHovered(true)}
-    onMouseLeave={() => setIsHovered(false)}
     title="Click to copy"
   >
     <span className={`${css.feedbackText} ${showFeedback ? css.visible : ""}`}>
