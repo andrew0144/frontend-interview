@@ -1,7 +1,5 @@
 "use client";
-import moment from "moment";
 import Link from "next/link";
-import {useState, useEffect, useRef} from "react";
 import Button from "@/components/Button/Button";
 import Card from "@/components/Card/Card";
 import {CopyText} from "@/components/CopyText/CopyText";
@@ -19,52 +17,11 @@ import TwitterSvg from "@/public/icons/twitter.svg";
 import css from "./page.module.scss";
 
 export default function Page() {
-  //calculate date according to the specification
-  const [formattedDate, setFormattedDate] = useState();
-  useEffect(() => {
-    const dates = [];
-    for (let i = 0; i < 100000; i++) {
-      dates.push(moment().subtract(i, "days"));
-    }
-
-    const result = dates.reduce((acc, date) => {
-      const dayOfYear = date.dayOfYear();
-      const weekOfYear = date.week();
-      const isLeapYear = date.isLeapYear();
-
-      return acc + dayOfYear + weekOfYear + (isLeapYear ? 1 : 0);
-    }, 0);
-
-    setFormattedDate(result);
-  }, [setFormattedDate]);
-
-
-  //Load banner
-  const [dynamicContent, setDynamicContent] = useState([]);
-  const [bannerVisible, setBannerVisible] = useState(false);
-  const contentRef = useRef(null);
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setDynamicContent(<>
-        <div>IMPORTANT ANNOUNCEMENT: Nexus Framework Update Coming Soon! Join our webinar on advanced cognitive architectures next week: new research paper published in partnership with DeepSeek.</div>
-      </>);
-
-      //Show banner after delay
-      setTimeout(() => {
-        setBannerVisible(true);
-      }, 150);
-    }, 200);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
 
   return <>
-    {bannerVisible && <div className={css.banner} ref={contentRef}>
-      {dynamicContent}
-    </div>}
+    <div className={css.banner}>
+      <div>IMPORTANT ANNOUNCEMENT: Nexus Framework Update Coming Soon! Join our webinar on advanced cognitive architectures next week: new research paper published in partnership with DeepSeek.</div>
+    </div>
 
     {/*Main above the fold section*/}
     <section className={`section ${css.aboveTheFold}`}>
@@ -190,11 +147,11 @@ export default function Page() {
           <h2 className="initialInvis">Recent Publications</h2>
         </SlideUpFadeIn>
         <CardExpansion className={css.cards}>
-          <Card title="Research Paper" icon={<ArticleSvg/>} images={[]} className="initialInvis" href="/" image="/images/image1/image1.png">
+          <Card title="Research Paper" icon={<ArticleSvg/>} className="initialInvis" href="/" image="/images/image1/image1.png">
           </Card>
-          <Card title="NEXUS Whitepaper" icon={<ArticleSvg/>} images={[]} className="initialInvis" href="/" image="/images/image2/image2.png">
+          <Card title="NEXUS Whitepaper" icon={<ArticleSvg/>} className="initialInvis" href="/" image="/images/image2/image2.png">
           </Card>
-          <Card title="DeepSeek R1 Integration" icon={<DeepseekSvg/>} images={[]} className="initialInvis" href="/" image="/images/image4/image4.png">
+          <Card title="DeepSeek R1 Integration" icon={<DeepseekSvg/>} className="initialInvis" href="/" image="/images/image4/image4.png">
           </Card>
           <div></div>
         </CardExpansion>
@@ -209,9 +166,9 @@ export default function Page() {
           <h2 className="initialInvis">Papers</h2>
         </SlideUpFadeIn>
         <CardExpansion className={css.cards}>
-          <Card title="LUMINA Study" icon={<ArticleSvg/>} images={[]} className="initialInvis" href="/"image="/images/image3/image3.png">
+          <Card title="LUMINA Study" icon={<ArticleSvg/>} className="initialInvis" href="/"image="/images/image3/image3.png">
           </Card>
-          <Card title="NEXUS Whitepaper" icon={<ArticleSvg/>} images={[]} className="initialInvis" image="/images/image2/image2.png">
+          <Card title="NEXUS Whitepaper" icon={<ArticleSvg/>} className="initialInvis" image="/images/image2/image2.png">
           </Card>
           <div></div>
         </CardExpansion>
@@ -227,11 +184,11 @@ export default function Page() {
           <h2 className="initialInvis">Planned Updates</h2>
         </SlideUpFadeIn>
         <CardExpansion className={css.cards}>
-          <Card title="Multimodal Compute" icon={<OctagonSvg/>} images={[]} className="initialInvis"href="/"image="/images/image6/image6.png">
+          <Card title="Multimodal Compute" icon={<OctagonSvg/>} className="initialInvis"href="/"image="/images/image6/image6.png">
           </Card>
-          <Card title="Knowledge Update" icon={<BooksSvg/>} images={[]} className="initialInvis" href="/"image="/images/image7/image7.png">
+          <Card title="Knowledge Update" icon={<BooksSvg/>} className="initialInvis" href="/"image="/images/image7/image7.png">
           </Card>
-          <Card title="Open Source" icon={<GithubLogoSvg/>} images={[]} className="initialInvis" href="/"image="/images/image5/image5.png">
+          <Card title="Open Source" icon={<GithubLogoSvg/>} className="initialInvis" href="/"image="/images/image5/image5.png">
           </Card>
         </CardExpansion>
       </div>

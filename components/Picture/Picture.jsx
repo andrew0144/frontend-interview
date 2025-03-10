@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from 'next/image';
 
 /**
  * A responsive picture component that generates WebP sources with fallback.
@@ -42,7 +42,7 @@ export default function Picture({
       sizes={sizes}
       type="image/webp"
     />
-    <img
+    <Image
       src={`${base}.png`}
       alt={alt}
       loading={loading}

@@ -3,6 +3,7 @@ import ScrollTriggeredAnimation from "@/components/ScrollTriggeredAnimation/Scro
 import gsap from "@/dependencies/gsap";
 import css from "./LuminaAvatar.module.scss";
 import BorderSvg from "./border.svg";
+import Image from 'next/image';
 
 function animate(root) {
   let tl = gsap.timeline();
@@ -59,7 +60,7 @@ export default function LuminaAvatar({className}){
   return <ScrollTriggeredAnimation animation={animate} className={className} threshold={0.5}>
     <div className={`initialInvis ${css.avatar}`}>
       <BorderSvg/>
-      <img src="/images/lumina/lumina.png" alt=""/>
+      <Image src="/images/lumina/lumina.png"/>
     </div>
   </ScrollTriggeredAnimation>;
 }

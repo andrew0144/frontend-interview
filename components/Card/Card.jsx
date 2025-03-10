@@ -1,6 +1,7 @@
 import React from "react";
 import constructClassName from "@/utilities/constructClassName";
 import css from "./Card.module.scss";
+import Image from 'next/image';
 
 
 export default function Card({
@@ -13,7 +14,9 @@ export default function Card({
 }) {
   const thisClassName = constructClassName(css, "card", `custom ${className}`);
   return <a className={thisClassName} href={href} target="_blank">
-    <img src={image}/>
+    <Image
+      src={image}
+    />
     <div className={css.inner}>
       <div className={css.overt}>
         <div className={css.icon}>
